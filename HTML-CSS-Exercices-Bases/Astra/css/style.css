@@ -1,0 +1,216 @@
+/* Réglages généraux */
+body {
+	margin: 0;
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+a {
+	text-decoration: none;
+}
+
+/* le header est composé de 2 sections : une pour le menu et une pour le slogan et l'image*/
+header {
+	background: linear-gradient(0.25turn, #1b019e, 50%, #7300c8);
+	padding: 5vh 8vw; /*padding proportionnel à la largeur et la hauteur de l'écran*/
+}
+
+/*********** première section :le logo, le menu et les liens vers les réseaux sociaux **********/
+header > section:nth-child(1) {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
+/* le logo */
+.logo > img {
+	max-width: 100%;
+}
+/*le menu*/
+header nav {
+	display: flex;
+	flex-wrap: wrap; /*pour que l 2ème ul passe en dessous s'il n'y a plus de place*/
+	width: 50vw; /*largeur choisie pour les 2 ul de menu*/
+	justify-content: space-between; /*écarte un peu les 2 ul l'une de l'autre*/
+	align-items: center; /*centre verticalement les ul pour les aligner avec le logo*/
+}
+header nav ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none; /*pas de puces (disques) sur les li*/
+	display: flex; /*affichage horizontal des li de l'ul*/
+	flex-wrap: wrap; /*si plus de place pour toutes les li, elles passent en dessous*/
+}
+/* tous les liens de la nav */
+header nav ul li {
+	flex-grow: 1; /*répartition équitable des li sur la largeur du parent*/
+	text-align: center; /*centre le texte de la balise a dans la li*/
+	display: flex; /*disposition horizontale*/
+	justify-content: center; /*centre la balise a*/
+}
+header nav ul:nth-child(1) li a {
+	/*la balise a occupe toute la largeur de la li qui la contient*/
+	display: block;
+	width: 100%;
+}
+header nav a {
+	color: white;
+	text-decoration: none;
+}
+/* les liens de menu */
+header nav ul:nth-child(1) {
+	width: 40vw; /*un peu arbitraire ici*/
+}
+/* les liens des réseaux sociaux */
+header nav ul:nth-child(2) {
+	width: 7vw; /*un peu arbitraire ici*/
+}
+header nav ul:nth-child(2) a {
+	/*centre les icônes verticalement pour les aligner avec les liens de menu*/
+	display: flex;
+	align-items: center;
+}
+header .iconify {
+	height: 1.5rem;
+	width: auto; /*sinon l'icone ne s'affiche pas*/
+}
+
+/*********** deuxième section **********/
+header > section:nth-child(2) {
+	/*disposition horizontale et centrage vertical et horizontal*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	padding: 3rem 0;
+}
+header > section:nth-child(2) > div {
+	width: 50vw; /*chaque div occupe la moitié de la largeur de l'écran*/
+}
+header > section:nth-child(2) h1 {
+	/*réglages pour le texte slogan*/
+	font-size: 7vw;
+	font-weight: 500;
+	margin: 0 0 10vh 0;
+}
+header > section:nth-child(2) > div:nth-child(1) {
+	display: flex;
+	flex-direction: column; /*disposition en colonne du slogan et du bouton en dessous*/
+}
+/*le bouton jaune*/
+header > section:nth-child(2) > div:nth-child(1) > div > a {
+	font-size: calc(0.5em + 1.5vw);
+	background-color: #ffb200;
+	color: black;
+	font-weight: bold;
+	border-radius: 2rem;
+	padding: 1vh 4vw;
+	text-align: center;
+}
+/*l'illustration à droite*/
+header > section:nth-child(2) > div:nth-child(2) {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+header > section:nth-child(2) > div:nth-child(2) > div {
+	width: 100%; /*sinon l'image ne s'affiche pas*/
+}
+header > section:nth-child(2) > div:nth-child(2) img {
+	max-width: 100%; /*limite la taille de l'image à celle de son parent*/
+}
+
+/********* le bas de la page ***********/
+main {
+	display: grid; /*une grille, pourquoi pas*/
+	grid-template-columns: repeat(
+		auto-fit,
+		minmax(20vw, 1fr)
+	); /*répartition équitable*/
+	height: 30vh; /*pas obligatoire ici*/
+}
+main article {
+	flex-grow: 1; /*répartition équitable verticale de l'icone, du titre et du texte*/
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+}
+.iconify {
+	color: #f76801;
+	width: calc(
+		20px + 1vw
+	); /*pour le responsive, l'icone a une partie de sa largeur fixe et une partie adaptable*/
+	height: auto;
+}
+main article div:nth-child(2) {
+	font-weight: bold;
+	text-align: center;
+}
+
+/* MEDIA QUERIES (breakpoints de Bootstrap) */
+
+@media (max-width: 992px) {
+	.logo {
+		width: 100vw;
+		margin-bottom: 2vh;
+		text-align: center;
+	}
+	header {
+		padding: 3vh 2vw;
+	}
+	header nav {
+		flex-direction: column;
+		width: 100vw;
+	}
+	header nav ul:nth-child(1) {
+		width: 100%;
+		margin-bottom: 1vh;
+	}
+	/* les liens des réseaux sociaux */
+	header nav ul:nth-child(2) {
+		width: 20vw; /*un peu arbitraire ici*/
+	}
+	header > section:nth-child(2) > div:nth-child(1) {
+		align-items: center;
+	}
+	header > section:nth-child(2) > div:nth-child(1) > h1 {
+		text-align: center;
+		width: 100%;
+		margin: 0 0 5vh 0;
+	}
+	main {
+		margin-top: 5vh;
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(50vw, 1fr));
+		height: 30vh;
+	}
+}
+@media (max-width: 768px) {
+	header nav ul:nth-child(1) {
+		width: 100%;
+	}
+	header nav ul:nth-child(2) {
+		margin: 1vh 0 2vh 0;
+	}
+}
+@media (max-width: 576px) {
+	/* les liens des réseaux sociaux */
+	header nav ul:nth-child(2) {
+		width: 40vw; /*un peu arbitraire ici*/
+	}
+	header > section:nth-child(2) {
+		flex-direction: column;
+		padding: 0;
+	}
+	header > section:nth-child(2) > div:nth-child(1) {
+		width: 100%;
+		margin-bottom: 5vh;
+	}
+	header > section:nth-child(2) > div:nth-child(1) > h1 {
+		text-align: center;
+		width: 100%;
+		font-size: 2rem;
+	}
+	main {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(100vw, 1fr));
+	}
+}
